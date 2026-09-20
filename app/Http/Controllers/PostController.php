@@ -17,14 +17,14 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         // TODO: $this->authorize('update', $post); を追加する
-
+        $this->authorize('update', $post);
         return view('posts.edit', compact('post'));
     }
 
     public function update(Request $request, Post $post)
     {
         // TODO: $this->authorize('update', $post); を追加する
-
+        $this->authorize('update', $post);
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
@@ -38,7 +38,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         // TODO: $this->authorize('delete', $post); を追加する
-
+        $this->authorize('delete', $post);
         $post->delete();
 
         return redirect()->route('posts.index');
